@@ -1,4 +1,4 @@
-const  Product= require('../models//Products');
+const  Product= require('../models/Products');
 
 async function addProduct(req, res){
     try{
@@ -71,24 +71,4 @@ async function deleteProducts(req, res){
         res.status(500).send({message: e.message})
     }
 }
-async function findProductsByLanguage(req, res) {
-    try {
-        const { articulo } = req.query; // Lee el idioma desde los parámetros de consulta
-
-        if (!articulo) {
-            return res.status(400).send({ message: 'Debes proporcionar un articulo para buscar productos.' });
-        }
-
-        const products= await Product.find({  });
-        
-        if (products.length === 0) {
-            return res.status(404).send({ message: 'No se encontraron productos para el articulo proporcionado.' });
-        }
-
-        res.status(200).send({ products});
-    } catch (error) {
-        console.error(error);
-        res.status(500).send({ message: 'Error al buscar productos por articulo ' });
-    }
-}
-module.exports = {addProduct, getProducts, findProducts, updateProducts, deleteProducts,findProductsByLanguage};
+module.exports = {addProduct, getProducts, findProducts, updateProducts, deleteProducts};

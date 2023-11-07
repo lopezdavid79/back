@@ -26,6 +26,6 @@ app.use(session({
     saveUninitialized: false,   //guarda una cookie sin valor inicial
 }))
 
-app.use('/v1', productsRoutes);
+app.use('/api', productsRoutes);
 
 module.exports = app;
